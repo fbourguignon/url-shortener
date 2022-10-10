@@ -13,3 +13,6 @@ out/
 .settings
 .classpath
 .factorypath
+url-shortener-api/.idea/**
+url-shortener-api/.gradle/**
+url-shortener-api/target/**
