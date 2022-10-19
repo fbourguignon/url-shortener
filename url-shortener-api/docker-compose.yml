@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+
+  mongodb:
+    image: "mongo"
+    container_name: "url_shortener_db"
+    ports:
+      - "27018:27017"
+
+
