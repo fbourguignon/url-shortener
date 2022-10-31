@@ -1,10 +1,14 @@
 package com.urlshortener.presentation.model;
 
-import lombok.Builder;
-import lombok.Value;
+import io.micronaut.core.annotation.Introspected;
+import lombok.*;
 
-@Value
+
+
+@Data
 @Builder
+@Introspected
 public class UrlResponseDTO {
     private String url;
+    private String key;
 }

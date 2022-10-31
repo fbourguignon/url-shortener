@@ -1,5 +1,6 @@
 package com.urlshortener.application.service;
 
+import com.urlshortener.application.exception.BusinessException;
 import com.urlshortener.application.exception.GenericException;
 import com.urlshortener.application.encoder.UrlKeyEncoder;
 import com.urlshortener.domain.model.Url;
@@ -7,10 +8,8 @@ import com.urlshortener.domain.exception.DomainException;
 import com.urlshortener.domain.exception.UrlNotFoundException;
 import com.urlshortener.domain.repository.UrlDomainRepository;
 import jakarta.inject.Singleton;
-import lombok.extern.slf4j.Slf4j;
 
 
-@Slf4j
 @Singleton
 public class UrlService {
 
@@ -22,13 +21,13 @@ public class UrlService {
         this.encoder = encoder;
     }
 
-    public Url shortUrl(Url url) {
+    public Url shortUrl(String url) {
         try {
-            log.info("Shortening and saving url [{}]", url);
-            url.setKey(encoder.encodeUrl(url.getValue()));
-            return repository.save(url);
+            Url newUrl = new Url();
+            newUrl.setValue(url);
+            newUrl.setKey(encoder.encodeUrl(url));
+            return repository.save(newUrl);
         } catch (Exception e){
-            log.error("An error has occurred on save url [{}]", e.getMessage());
             throw new GenericException("An error has occurred on save url");
         }
     }
@@ -37,8 +36,8 @@ public class UrlService {
         try {
             return repository.findByKey(key)
                     .orElseThrow(() -> new UrlNotFoundException(""));
-        } catch (DomainException d){
-            throw d;
+        } catch (DomainException de){
+            throw new BusinessException(de.getMessage());
         } catch (Exception e){
             throw new GenericException("An error has ocorred on save url");
         }

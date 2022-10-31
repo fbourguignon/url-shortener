@@ -7,8 +7,8 @@ import com.urlshortener.application.service.UrlService;
 import com.urlshortener.domain.model.Url;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
-
 import lombok.extern.slf4j.Slf4j;
+
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -27,15 +27,15 @@ public class UrlController {
 
     @Post
     public HttpResponse<UrlResponseDTO> shortenUrl(@Valid @Body UrlShortenRequestDTO request){
-        log.info("Handling request to shorten url [{}]", request.getUrl());
-        Url url = service.shortenUrl(request.getUrl());
+        log.info("Handling request to short URL: [{}]", request.getUrl());
+        Url url = service.shortUrl(request.getUrl());
         return HttpResponse.created(mapper.toDTO(url));
     }
 
     @Get("/{key}")
     public HttpResponse retrieveUrl(@PathVariable String key){
-        log.info("Handling request to retrieve an shortened url [{}]", key);
-        Url url = service.retrieveShortenedUrl(key);
+        log.info("Handling request to retrieve shortened URL: [{}]", key);
+        Url url = service.retrieveUrl(key);
         return HttpResponse.redirect(URI.create(url.getValue()));
     }
 

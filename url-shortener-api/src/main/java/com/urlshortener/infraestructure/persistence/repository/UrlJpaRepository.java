@@ -8,6 +8,5 @@ import java.util.Optional;
 
 @MongoRepository
 public interface UrlJpaRepository extends CrudRepository<UrlEntity, String> {
-    UrlEntity save(UrlEntity url);
     Optional<UrlEntity> findByKey(String key);
 }

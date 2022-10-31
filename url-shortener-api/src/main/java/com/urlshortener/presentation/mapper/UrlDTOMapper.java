@@ -11,6 +11,7 @@ public class UrlDTOMapper {
         return UrlResponseDTO
                 .builder()
                 .url(encodedUrl.getValue())
+                .key(encodedUrl.getKey())
                 .build();
     }
 }

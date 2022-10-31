@@ -7,28 +7,22 @@ import io.micronaut.data.annotation.MappedEntity;
 import lombok.Builder;
 import lombok.Data;
 
+
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 @Data
 @Builder
 @MappedEntity
-public class UrlEntity implements Serializable {
+public class UrlEntity {
 
     @Id
     @GeneratedValue
     private String id;
 
-    @NonNull
     @NotBlank
-    private final String key;
+    private String key;
 
-    @NonNull
     @NotBlank
-    private final String value;
+    private String value;
 
-    public UrlEntity(@NonNull String key, @NonNull String value) {
-        this.key = key;
-        this.value = value;
-    }
 }

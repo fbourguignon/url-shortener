@@ -1,8 +1,10 @@
 package com.urlshortener.domain.model;
 
+import io.micronaut.core.annotation.Introspected;
+
 import java.io.Serializable;
 import java.util.UUID;
-
+@Introspected
 public class Url implements Serializable {
 
     private String id;

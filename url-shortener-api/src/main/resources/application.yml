@@ -5,3 +5,6 @@ netty:
   default:
     allocator:
       max-order: 3
+mongodb:
+  uri: mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27017}/mydb
+  package-names: com.urlshortener.infraestructure.persistence
