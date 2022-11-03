@@ -8,9 +8,11 @@ import com.urlshortener.domain.exception.DomainException;
 import com.urlshortener.domain.exception.UrlNotFoundException;
 import com.urlshortener.domain.repository.UrlDomainRepository;
 import jakarta.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Singleton
+@Slf4j
 public class UrlService {
 
     private final UrlDomainRepository repository;
@@ -28,6 +30,7 @@ public class UrlService {
             newUrl.setKey(encoder.encodeUrl(url));
             return repository.save(newUrl);
         } catch (Exception e){
+            log.error("An exception has occurred on save encoded URL:[{}]",e.getMessage());
             throw new GenericException("An error has occurred on save url");
         }
     }
@@ -37,8 +40,10 @@ public class UrlService {
             return repository.findByKey(key)
                     .orElseThrow(() -> new UrlNotFoundException(""));
         } catch (DomainException de){
+            log.error("An domain exception has occurred on save encoded URL:[{}]",de.getMessage());
             throw new BusinessException(de.getMessage());
         } catch (Exception e){
+            log.error("An exception has occurred on save encoded URL:[{}]",e.getMessage());
             throw new GenericException("An error has ocorred on save url");
         }
     }

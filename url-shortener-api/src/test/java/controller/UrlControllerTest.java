@@ -18,6 +18,7 @@ public class UrlControllerTest {
     private final String ENDPOINT = "/v1/url";
     private final String ENDPOINT_WITH_ID = ENDPOINT.concat("/%s");
     private String urlKey =  "";
+    private final String notFoundKey =  "notFoundKey";
 
     @Test
     @Order(1)
@@ -45,5 +46,16 @@ public class UrlControllerTest {
                 .when()
                     .redirects().follow(false)
                     .get(String.format(ENDPOINT_WITH_ID, this.urlKey));
+    }
+
+    @Test
+    @Order(3)
+    public void getShortenedUrl_KeyNotFound(RequestSpecification spec) {
+        spec
+             .when()
+                .get(String.format(ENDPOINT_WITH_ID, notFoundKey))
+             .then()
+                .statusCode(422);
+
     }
 }
