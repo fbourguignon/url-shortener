@@ -16,3 +16,4 @@ out/
 url-shortener-api/.idea/**
 url-shortener-api/.gradle/**
 url-shortener-api/target/**
+logs/urlshortenerapi.log        
