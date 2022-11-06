@@ -43,8 +43,8 @@ public class UrlService {
             log.error("An domain exception has occurred on save encoded URL:[{}]",de.getMessage());
             throw new BusinessException(de.getMessage());
         } catch (Exception e){
-            log.error("An exception has occurred on save encoded URL:[{}]",e.getMessage());
-            throw new GenericException("An error has ocorred on save url");
+            log.error("An exception has occurred on retrieve encoded URL:[{}]",e.getMessage());
+            throw new GenericException("An error has retrieve on save url");
         }
     }
 }

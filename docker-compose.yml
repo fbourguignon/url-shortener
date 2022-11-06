@@ -11,11 +11,17 @@ services:
     ports:
       - "8080:8080"
     restart: always
+    environment:
+       - "MONGO_HOST=url_shortener_db"
+    networks:
+      - url_shortener_network
   mongodb:
     image: "mongo"
     container_name: "url_shortener_db"
     ports:
       - "27017:27017"
+    networks:
+      - url_shortener_network
   promtail:
     image: grafana/promtail:2.1.0
     container_name: promtail
@@ -39,11 +45,13 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_DISABLE_LOGIN_FORM=true
-      - GF_USERS_DEFAULT_THEME=light
+      - GF_USERS_DEFAULT_THEME=dark
     ports:
       - "3000:3000"
     depends_on:
       - loki
 
-
+networks:
+  url_shortener_network:
+    name: url_shortener_network
 
