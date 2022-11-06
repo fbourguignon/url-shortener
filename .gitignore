@@ -21,3 +21,4 @@ logs/urlshortenerapi.log
 url-shortener-api/logs/**
 logs/urlshortenerapi.log
 logs/**
+logs/urlshortenerapi.log
