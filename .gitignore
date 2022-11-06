@@ -18,3 +18,5 @@ url-shortener-api/.gradle/**
 url-shortener-api/target/**
 logs/**
 url-shortener-api/logs/**
+logs/urlshortenerapi.log
+url-shortener-api/logs/urlshortenerapi.log
