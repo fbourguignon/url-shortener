@@ -1,0 +1,7 @@
+mongodb:
+  package-names: com.urlshortener.infraestructure.persistence
+
+test-resources:
+  containers:
+    mongodb:
+      image-name: mongo:5
