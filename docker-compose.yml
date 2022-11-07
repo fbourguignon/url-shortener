@@ -50,6 +50,16 @@ services:
       - "3000:3000"
     depends_on:
       - loki
+  prometheus:
+    image: prom/prometheus:v2.35.0
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./docker/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yaml"
+    ports:
+      - "9090:9090"
 
 networks:
   url_shortener_network:
