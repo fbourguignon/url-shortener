@@ -24,7 +24,7 @@ public class UrlControllerTest {
     @Order(1)
     void shortenUrl_Success(RequestSpecification spec) throws JsonProcessingException {
 
-        var request = new UrlShortenRequestDTO("www.google.com.br");
+        var request = new UrlShortenRequestDTO("http://www.google.com.br");
         urlKey = spec
                     .when()
                     .body(request)
@@ -32,7 +32,7 @@ public class UrlControllerTest {
                     .post(ENDPOINT)
                 .then()
                     .statusCode(201)
-                    .body("url", equalTo("www.google.com.br"))
+                    .body("url", equalTo("http://www.google.com.br"))
                     .body("key", notNullValue())
                 .extract()
                     .body()

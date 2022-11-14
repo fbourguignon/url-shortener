@@ -26,3 +26,14 @@ Prometheus is running on port 9090
 [Sample Query](http://localhost:9090/graph?g0.expr=rate(http_server_requests_seconds_count%5B5m%5D)&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h)
 
 ![picture](img/prometheus-local.png)
+
+## Swagger UI
+[swagger-ui url](http://localhost:8080/swagger-ui#/)
+
+![picture](img/swagger-local.png)
+
+## Running the project
+This command starts all containers and builds the project.
+```console
+url-shortener % make start
+```

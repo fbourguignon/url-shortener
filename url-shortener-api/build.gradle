@@ -21,6 +21,8 @@ dependencies {
     implementation("io.micronaut.micrometer:micronaut-micrometer-core")
     implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
     implementation "io.micronaut:micronaut-management"
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.6.0")
+    implementation("io.swagger.core.v3:swagger-annotations")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.mongodb:mongodb-driver-sync")
     implementation("io.micronaut:micronaut-validation")
