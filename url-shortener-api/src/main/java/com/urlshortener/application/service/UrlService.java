@@ -40,7 +40,7 @@ public class UrlService {
             return repository.findByKey(key)
                     .orElseThrow(() -> new UrlNotFoundException("URL not found with provided key"));
         } catch (DomainException de){
-            log.error("An domain exception has occurred on save encoded URL:[{}]",de.getMessage());
+            log.error("An domain exception has occurred on retrieve encoded URL:[{}]",de.getMessage());
             throw new BusinessException(de.getMessage());
         } catch (Exception e){
             log.error("An exception has occurred on retrieve encoded URL:[{}]",e.getMessage());
